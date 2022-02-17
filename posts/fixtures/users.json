@@ -1,0 +1,56 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$WuScom3Q9F6wrlrOFvuH5G$dhzs2VCP1OcoWZmhZBZYV49SSLs9TdJJBfppQHyO8D0=",
+    "last_login": "2021-12-30T14:40:01.897Z",
+    "is_superuser": true,
+    "username": "developer",
+    "first_name": "",
+    "last_name": "",
+    "email": "a_wl@wp.pl",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-30T14:22:51.952Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$PHicmJa3hhCc9yOYKvjuUg$UxZ00vl70DBZEFJm9LGAFbui033+B1qevF/Z56l+Iws=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tester",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-12-30T14:32:38.688Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$31h3lrJTJarXWKtpvhFFl3$xW+jr4DRyqRJ1pfc391Kh4K/2MqNT8/8uH5eBpAjCoE=",
+    "last_login": "2021-12-30T14:36:11.238Z",
+    "is_superuser": false,
+    "username": "tester3",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-12-30T14:35:21Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+    <p><h3>Dodawanie nowej książki:</h3></p>
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+{#    {% crispy form %}#}
+{#    <button type="submit" form="BookForm" value="Submit">Submit</button>#}
+{#    {% crispy form form.helper %}#}
+        <form method = "POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit"
+    class = "btn btn-primary">Wyślij</button>
+    </form>
+{% endblock %}

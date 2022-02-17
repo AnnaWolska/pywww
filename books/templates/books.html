@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block header %}
+    {% endblock %}
+
+    {% block content %}
+        <img src="/static/main/img/magia.jpg" width="400" height="300" alt="magia czytania">
+        <h2>  <a href = "{% url 'books:add_book' %}"> Dodaj książkę </a>  </h2>
+      <h1>Lista książek:</h1>
+
+        {%  for book in books  %}
+            <div class="list-group">
+            <ol>
+                <li class="list-group-item">
+                   {{ book.id}}    {{  book.title }} , {{  book.author }} , {{  book.decription }} , {{  book.publication_year }} ,
+                     <a href = "{% url 'books:details' book.id %}" > szczegóły
+                     {% if book.available %}
+                        <p class="list-group-item list-group-item-action disabled">jest na półce</p>
+                     {% else %}
+                         <p class="list-group-item list-group-item-action disabled">wypożyczona</p>
+                     {% endif %}
+                    </a>
+                </li>
+            </ol>
+            </div>
+        {% endfor %}
+
+    {% endblock %}
+
+</body>
+</html>

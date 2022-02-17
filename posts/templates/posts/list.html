@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link href="{% static "main/css/style.css" %}" rel="stylesheet">
+    <link href ="{% static "posts/css/style.css" %}" rel = "stylesheet">
+{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+     <img src="/static/main/img/czytanie.jpeg" alt="czytanie">
+    <h2>  <a href = "{% url 'posts:add_post' %}"> Dodaj post </a>  </h2>
+    <h1>Lista postów:</h1>
+    <ul>
+    {%  for post in posts_list %}
+{#        <li>{{ post.title }} - {{ post.content }}  <a href ="{% url 'posts:details' post.id %}"> kliknij żeby zobaczyć szczegóły </a>   </li>#}
+{#        <li> {% if post.sponsored %}#}
+{#              To jest post sposorowany!#}
+{#            {% else %}#}
+{#               to nie jest sponsorowany#}
+{#            {% endif %}#}
+{#        </li>#}
+
+        <div class="list-group">
+            <ol>
+                <li class="list-group-item">
+                   {{ post.id}}    {{ post.title }} , {{  post.content }}  ,
+                     <a href = "{% url 'posts:details' post.id %}" > szczegóły
+                     {% if post.sponsored %}
+                        <p class="list-group-item list-group-item-action disabled">post sponsorowany</p>
+                     {% else %}
+                         <p class="list-group-item list-group-item-action disabled">post niesponsorowany</p>
+                     {% endif %}
+                    </a>
+                </li>
+            </ol>
+            </div>
+
+    {% endfor %}
+   </ul>
+{% endblock %}

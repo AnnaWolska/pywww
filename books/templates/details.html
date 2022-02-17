@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        {% extends "base.html" %}
+        {% block content %}
+           <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
+            <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
+                   <h1> Szczegóły książki : </h1>
+     <h3>
+     <ul>
+{#         <li> nr {{ book.id }}</li>#}
+         <li>
+             tytuł:  {{ title }}
+         </li>
+         <li>
+             obraz: {{ image }}
+         </li>
+         <li>
+             opis:  {{ decription }}
+         </li>
+         <li>
+              autor: {{ author }}
+         </li>
+         <li>
+             {% if tags %}
+             tagi: {{ tags.name }}
+             {% else %}
+             nie ma tagów
+            {% endif %}
+
+         </li>
+     </ul>
+         <div>
+             {% if image %}
+             <img src="{{ image.url }}">
+             {% endif %}
+         </div>
+     <div>
+        <img src={{ image }} alt="okładka">
+    </div>
+     </h3>
+         {% endblock %}
+
+</body>
+</html>

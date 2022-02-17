@@ -1,0 +1,35 @@
+[
+{
+  "model": "books.books",
+  "pk": 1,
+  "fields": {
+    "title": "harry potter",
+    "decription": "very good book",
+    "available": true,
+    "publication_year": 1999,
+    "author": "Kate Rowling"
+  }
+},
+{
+  "model": "books.books",
+  "pk": 2,
+  "fields": {
+    "title": "hobbit",
+    "decription": "very interesting",
+    "available": true,
+    "publication_year": 1950,
+    "author": "J.R.R. Tolkien"
+  }
+},
+{
+  "model": "books.books",
+  "pk": 3,
+  "fields": {
+    "title": "Diuna",
+    "decription": "long book",
+    "available": true,
+    "publication_year": 1960,
+    "author": "Fran H."
+  }
+}
+]

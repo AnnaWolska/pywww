@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h3><a href = "{% url 'posts:list' %}"> Powrót do listy postów </a></h3>
+{% endblock %}
+
+{% block content %}
+    <img src="/static/main/img/mole.jpeg" alt="mole">
+{% if  published  %}
+    <h1> Szczegóły posta : </h1>
+    <h2> <a href = "{% url 'posts:edit_post' post_id %}"> Edytuj post </a> </h2>
+    <h3>
+     <ul>
+         <li> tytuł: {{ title }}</li>
+         <li>treść: {{ content }}</li>
+         <li>
+             <div>opublikowano: {{ published }}</div>
+         </li>
+         <li>sponsorowany: {{ sponsored }}</li>
+         <li>użytkownik: {{ user }}</li>
+         <li>tagi: {{ tags }}</li>
+         <li>
+             {% if categories %}
+                <h2>kategorie: {{ categories }}</h2>
+             {% else %}
+                 <h3>Tu są czasem wyświetlone kategorie, akurat ten post nie ma żadnej kategorii.</h3>
+             {% endif %}
+         </li>
+         <li>
+             {% if exemple_file %}
+             <div>Pobierz: <a href ="{{ exemple_file.url }}">przykład</a></div>
+             {% endif %}
+         </li>
+        <div>
+            <li>
+                {% if  image %}
+                   <img src="{{ image.url }}">
+                    {% else %}
+                Tu może być czasem obrazek.
+                    {% endif %}
+            </li>
+        </div>
+     </ul>
+     </h3>
+        {% else %}
+            <p><h2>Szeczegóły posta są niedostępne.</h2></p>
+        {% endif %}
+{% endblock %}
+
