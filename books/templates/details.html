@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-        {% extends "base.html" %}
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
         {% block content %}
            <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
             <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
@@ -39,10 +34,19 @@
              {% endif %}
          </div>
      <div>
-        <img src={{ image }} alt="okładka">
+        <img src={{ image}} alt="okładka">
     </div>
      </h3>
+            {% if book.available %}
+                <div class="alert alert-success" role="alert">Dostępna</div>
+                {% else %}
+                <div class="alert alert-danger" role="alert">Wypożyczona</div>
+
+            {% endif %}
+             <div>
+            {% if book.available %}
+                {% crispy form %}
+            {% endif %}
+            </div>
          {% endblock %}
 
-</body>
-</html>
