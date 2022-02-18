@@ -8,7 +8,7 @@
     <img src="/static/main/img/mole.jpeg" alt="mole">
 {% if  published  %}
     <h1> Szczegóły posta : </h1>
-    <h2> <a href = "{% url 'posts:edit_post' post_id %}"> Edytuj post </a> </h2>
+    <h2> <a href = "{% url 'posts:edit_post' post.id %}"> Edytuj post </a> </h2>
     <h3>
      <ul>
          <li> tytuł: {{ title }}</li>

@@ -84,6 +84,6 @@ def edit_post(request, post_id):
         form = PostForm(instance=post)
     return render(
         request,
-        "posts/add.html",
+        "posts/edit.html",
         {"form": form}
     )
