@@ -7,10 +7,6 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'published', 'sponsored', 'image']
-        # title = forms.CharField(label="Tytuł:")
-        # content = forms.CharField(widget=forms.Textarea, label="Treść posta:")
-        # published = forms.BooleanField(required=False, label="Czy opublikowany?")
-        # sponsored = forms.BooleanField(required=False, label="Czy sponsorowany?")
         labels = {
             "title": "Tytuł",
             "content": "Treść",
@@ -22,7 +18,7 @@ class PostForm(forms.ModelForm):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
             self.helper.form_method = 'post'
-            self.helper.from_action = 'contact'
+            self.helper.from_action = 'post:add'
             self.helper.layout = Layout(
                 Fieldset(
                     'Dodaj post',

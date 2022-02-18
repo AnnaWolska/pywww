@@ -8,5 +8,4 @@ urlpatterns = [
     path('home', home_view, name = "home"),
     path('contact', contact, name="contact"),
     path('user/<int:user_id>/profile', user_profile, name="userprofile")
-
 ]

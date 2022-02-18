@@ -30,7 +30,6 @@ def book_details(request, book_id):
 
 
 def add_book(request):
-    # form = BookForm()
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():

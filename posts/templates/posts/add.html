@@ -8,9 +8,7 @@
 {% block title %}  Nowy post {% endblock %}
 
 {% block content %}
-{#{% crispy form %}#}
-{# <button type="submit" form="PostForm" value="Submit">Submit</button>#}
-            <form method = "POST">
+    <form method = "POST">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit"

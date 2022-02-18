@@ -21,8 +21,7 @@ class BookForm(forms.ModelForm):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
             self.helper.from_method = 'post'
-            self.helper.from_method = 'contact'
-            # ten helper ma być form_action 'books:add'
+            self.helper.from_method = 'books:add'
             self.helper.layout = Layout(
                 Fieldset(
                     'Dodaj książkę',
