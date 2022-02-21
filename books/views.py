@@ -7,7 +7,8 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import AnonymousUser
 from tags.models import Tag
 from books.forms import BookForm, BookBorrowForm
-from django.utils import  timezone
+from django.utils import timezone
+
 
 def library(request):
     books = Books.objects.all()
@@ -62,15 +63,18 @@ def borrow_books(request, book_id=None):
             else:
                 keys = [key for key in request.POST.keys() if key.startswith("book_")]
                 key=int(keys[0].split("_")[1])
-                book = Borrow.objects.get(pk=key)
+                book = Books.objects.get(pk=key)
                 borrow = Borrow.objects.filter(user=user, book=book).last()
                 if not borrow.return_date:
                     borrow.return_date = timezone.now()
                     borrow.save()
                     book.available = True
                     book.save()
-                return HttpResponseRedirect(reverse("books:boorow_list"))
-
+                # return HttpResponseRedirect(reverse("books:borrows"))
+                return HttpResponseRedirect(reverse("books:borrow_list"))
     else:
         borrows = Borrow.objects.filter(user=user)
-        return render(request, "books/borrow_list", {"borrows":borrows})
+        return render(request, "borrow_list.html", {"borrows":borrows})
+
+
+# def show_borrowed_books(request, book_id):

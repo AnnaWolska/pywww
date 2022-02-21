@@ -8,7 +8,7 @@
             <form action="{% url "books:borrow_list" %}" method="post">
             {%  csrf_token %}
             <tr><td>{{ borrow.book.title }}</td><td>{{ borrow.borrow_date }}</td>
-                <td>{% if borrow.return_date %}{{ borrow.return_date.id }}{% else %}
+                <td>{% if borrow.return_date %}{{ borrow.return_date }}{% else %}
                 <button type="submit" name="book_{{ borrow.book.id }}" class="btn btn-primary">Zwróć</button>
                     {% endif %}
                 </td>
