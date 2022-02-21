@@ -16,16 +16,22 @@
     <ul>
     {%  for post in posts_list %}
 
+
         <div class="list-group">
             <ol>
+             {% if post.published %}
                 <li class="list-group-item">
-                   {{ post.id}}    {{ post.title }} , {{  post.content }}  ,
-                     <a href = "{% url 'posts:details' post.id %}" > szczegóły
+                    {{ post.id}}    {{ post.title }} , {{  post.content }}  ,
+
+                     <p> <a href = "{% url 'posts:details' post.id %}" > Szczegóły  </a>   </p>
+                     <p> <a href = "{% url 'posts:edit_post' post.id %}">  Edytuj post </a>   </p>
                      {% if post.sponsored %}
+
                         <p class="list-group-item list-group-item-action disabled">post sponsorowany</p>
                      {% else %}
                          <p class="list-group-item list-group-item-action disabled">post niesponsorowany</p>
                      {% endif %}
+                {% endif %}
                     </a>
                 </li>
             </ol>

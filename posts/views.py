@@ -10,9 +10,6 @@ from posts.forms import PostForm
 
 def posts_list(request):
     posts = Post.objects.all()
-    # template = loader.get_template('posts/list.html')
-    # context = {'posts_list':posts}
-    # return HttpResponse(template.render(context=context))
     context = {'posts_list': posts}
     return render(request, "posts/list.html", context)
 
@@ -29,6 +26,7 @@ def first_post(request):
 
 def post_details(request, post_id):
     posts = Post.objects.get(pk=post_id)
+    id = posts.id
     title = posts.title
     content = posts.content
     published = posts.published
@@ -39,6 +37,7 @@ def post_details(request, post_id):
     exemple_file = posts.exemple_file
     image = posts.image
     return render(request, "posts/details.html", context={
+        'id' : id,
         'title' : title,
         'content': content,
         'published' : published,
@@ -85,5 +84,6 @@ def edit_post(request, post_id):
     return render(
         request,
         "posts/edit.html",
+        # "posts/add.html",
         {"form": form}
     )
