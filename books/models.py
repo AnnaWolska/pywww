@@ -22,4 +22,4 @@ class Borrow(models.Model):
     return_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.book} {self.user} {self.borrow_date} {self.return_date}"
+       return f"{self.book} {self.user} {self.borrow_date} {self.return_date}"

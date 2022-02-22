@@ -21,10 +21,18 @@
          </li>
          <li>sponsorowany: {{ sponsored }}</li>
          <li>użytkownik: {{ user }}</li>
-         <li>tagi: {{ tags }}</li>
+         <li>tagi:
+             {% for tag in tags %}
+             {{ tag }},
+             {% endfor %}
+         </li>
+
          <li>
              {% if categories %}
-                <h2>kategorie: {{ categories }}</h2>
+                kategorie:
+                 {% for category in categories %}
+                 {{ category }},
+                 {% endfor %}
              {% else %}
                  <h3>Tu są czasem wyświetlone kategorie, akurat ten post nie ma żadnej kategorii.</h3>
              {% endif %}

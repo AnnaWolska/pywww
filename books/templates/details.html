@@ -20,11 +20,12 @@
               autor: {{ author }}
          </li>
          <li>
-             {% if tags %}
-             tagi: {{ tags.name }}
-             {% else %}
-             nie ma tagów
-            {% endif %}
+            tagi:
+
+                 {% for tag in tags %}
+                   {{ tag}},
+                 {% endfor %}
+
 
          </li>
      </ul>

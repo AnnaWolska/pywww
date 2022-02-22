@@ -10,8 +10,9 @@ class PostResource(resources.ModelResource):
 @admin.register(Books)
 class BooksAdmin(ExportMixin,admin.ModelAdmin):
     list_display = ["id", "title", "decription", "available", "publication_year", "author"]
-    search_fields = ["title", "author", "publication_year", "available"]
-    list_filter = ["author", "available"]
+    search_fields = ["title", "author", "publication_year", "available", "tags"]
+    list_filter = ["author", "available", "tags"]
+    autocomplete_fields = ['tags']
     resource_class = PostResource
 
 @admin.register(Borrow)

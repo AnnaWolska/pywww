@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{%  block style %}
+    <link href="{%  static "posts/css/styles.css %}" %}" rel=stylesheet">
+{% endblock %}
 {% block header %}
     <p><h3>Dodawanie nowgo posta:</h3></p>
 {% endblock %}
@@ -14,4 +17,9 @@
     <button type="submit"
     class = "btn btn-primary">Wyślij</button>
     </form>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    {{ form.media }}
 {% endblock %}

@@ -21,7 +21,8 @@ def book_details(request, book_id):
     title = book.title
     decription = book.decription
     author = book.author
-    tags = book.tags
+    # tags = [tag.name for tag in book.tags]
+    tags = book.tags.all()
     form = BookBorrowForm()
     form.helper.form_action = reverse("books:borrows", args=[book.id])
     return render(request, "details.html", context = {

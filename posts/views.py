@@ -32,8 +32,8 @@ def post_details(request, post_id):
     published = posts.published
     sponsored = posts.sponsored
     user = posts.user
-    tags = posts.tags
-    categories = posts.categories
+    tags = posts.tags.all()
+    categories = posts.categories.all()
     exemple_file = posts.exemple_file
     image = posts.image
     return render(request, "posts/details.html", context={
@@ -65,6 +65,7 @@ def add_post(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
+            form.save_m2m()
             return HttpResponseRedirect(reverse("posts:add_post"))
     else:
         form = PostForm()

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{%  block style %}
+    <link href="{%  static "posts/css/styles.css %}" %}" rel=stylesheet">
+{% endblock %}
+
 {% block header %}
     <p><h3>Edytowanie posta:</h3></p>
 {% endblock %}
