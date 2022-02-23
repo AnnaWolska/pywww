@@ -2,7 +2,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, HTML, ButtonHolder
 from django import forms
 from dal import autocomplete
-from posts.models import Post
+from posts.models import Post, Category
 from tags.models import Tag
 from django.contrib import admin
 from django.contrib.admin.widgets import AutocompleteSelectMultiple
@@ -14,9 +14,17 @@ class PostForm(forms.ModelForm):
         widget=autocomplete.ModelSelect2Multiple(url='tags:tag-autocomplete'
         )
     )
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        # widget=AutocompleteSelectMultiple(Post._meta.get_field('categories'),admin.AdminSite())
+    widget = autocomplete.ModelSelect2Multiple(url='posts:category-autocomplete'
+    )
+    )
+
+
     class Meta:
         model = Post
-        fields = ['title', 'content', 'published', 'sponsored', 'image', 'tags']
+        fields = ['title', 'content', 'published', 'sponsored', 'image', 'tags', 'categories']
         labels = {
             "title": "Tytuł",
             "content": "Treść",
@@ -37,7 +45,8 @@ class PostForm(forms.ModelForm):
                     'published',
                     'sponsored',
                     'image',
-                    'tags'
+                    'tags',
+                    'categories',
                 ),
                 ButtonHolder(
                     Submit('submit', 'Dodaj', css_class='btn btn-primary'),

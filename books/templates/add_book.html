@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{%  block style %}
+    <link href= "{% static "books/css/style.css" %}" rel=stylesheet">
+{% endblock %}
 
 {% block header %}
     <p><h3>Dodawanie nowej książki:</h3></p>
@@ -15,4 +20,9 @@
     <button type="submit"
     class = "btn btn-primary">Wyślij</button>
     </form>
+{% endblock %}
+
+{% block additional_scripts %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    {{ form.media }}
 {% endblock %}

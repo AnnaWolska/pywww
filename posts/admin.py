@@ -12,10 +12,15 @@ class PostAdmin(ExportMixin,admin.ModelAdmin):
     list_display = ["title","content","published","created","modified","sponsored","user"]
     search_fields = ["title","content","published","created","modified","sponsored","user"]
     list_filter = ["published", "sponsored", "exemple_file", "tags"]
+    autocomplete_fields = ['tags', 'categories']
     resource_class = PostResource
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
+    # prepopulated_fields = {"slug": ("name",)}
     list_display = ["name", "description"]
-    search_fields = ["name", "description"]
+    search_fields = ["name"]
+    # autocomplete_fields = ['tags', 'categories']
+    # resource_class = PostResource
+
 

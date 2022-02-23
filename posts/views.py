@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from posts.models import Post
+from posts.models import Post, Category
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import AnonymousUser
 from posts.forms import PostForm
-
+from dal import autocomplete
 
 def posts_list(request):
     posts = Post.objects.all()
@@ -88,3 +88,17 @@ def edit_post(request, post_id):
         # "posts/add.html",
         {"form": form}
     )
+
+
+
+class CategoryAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        if not self.request.user.is_authenticated:
+            return Category.objects.none()
+
+        qs = Category.objects.all()
+
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+
+        return qs
