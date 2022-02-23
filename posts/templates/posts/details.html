@@ -40,17 +40,18 @@
          <li>
              {% if exemple_file %}
              <div>Pobierz: <a href ="{{ exemple_file.url }}">przykład</a></div>
+             {% else %}
+                 tu może być czasem plik do pobrania
              {% endif %}
          </li>
-        <div>
-            <li>
-                {% if  image %}
-                   <img src="{{ image.url }}">
-                    {% else %}
-                Tu może być czasem obrazek.
-                    {% endif %}
-            </li>
-        </div>
+
+            {% if  image %}
+               <img src="{{ image.url }}">
+                {% else %}
+            tu może być czasem obrazek.
+                {% endif %}
+
+
      </ul>
      </h3>
         {% else %}

@@ -8,11 +8,15 @@ from django.contrib.auth.models import AnonymousUser
 from tags.models import Tag
 from books.forms import BookForm, BookBorrowForm
 from django.utils import timezone
+from django.core.paginator import Paginator
 
 
 def library(request):
     books = Books.objects.all()
-    context = {'books' : books}
+    paginator = Paginator(books, 10)
+    page_number = request.GET.get('page')
+    books_list = paginator.get_page(page_number)
+    context = {'books_list' : books_list}
     return render(request, "books.html", context)
 
 
@@ -21,8 +25,8 @@ def book_details(request, book_id):
     title = book.title
     decription = book.decription
     author = book.author
-    # tags = [tag.name for tag in book.tags]
     tags = book.tags.all()
+    image = book.image
     form = BookBorrowForm()
     form.helper.form_action = reverse("books:borrows", args=[book.id])
     return render(request, "details.html", context = {
@@ -31,7 +35,8 @@ def book_details(request, book_id):
         'author' : author,
         'tags' : tags,
         'book':book,
-        "form":form
+        "image":image,
+        "form":form,
     })
 
 

@@ -8,7 +8,7 @@
         <h2>  <a href = "{% url 'books:add_book' %}"> Dodaj książkę </a>  </h2>
       <h1>Lista książek:</h1>
 
-  {%  for book in books  %}
+  {%  for book in books_list  %}
             <div class="list-group">
             <ol>
                 <li class="list-group-item">
@@ -24,6 +24,25 @@
             </ol>
             </div>
         {% endfor %}
+
+      <div class="pagination">
+    <span class = "step-links">
+        {% if books_list.has_previous %}
+            <a href="?page=1">&laquo; pierwsza</a>
+            <a href="?page={{ books_list.previous_page_number }}">poprzednia</a>
+        {% endif %}
+
+        <span class="current">
+            strona {{ books_list.number }} z {{ books_list.paginator.num_pages }}.
+        </span>
+
+        {% if books_list.has_next %}
+
+            <a href="?page={{ books_list.next_page_number }}">następna</a>
+{#            <a href="?page={{ books_list.paginator.num_pages }}">poprzednia &raquo;</a>#}
+        {% endif %}
+    </span>
+</div>
 
     {% endblock %}
 

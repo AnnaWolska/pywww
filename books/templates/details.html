@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 
         {% block content %}
+
            <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
             <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
                    <h1> Szczegóły książki : </h1>
@@ -10,9 +11,7 @@
          <li>
              tytuł:  {{ title }}
          </li>
-         <li>
-             obraz: {{ image }}
-         </li>
+
          <li>
              opis:  {{ decription }}
          </li>
@@ -21,12 +20,9 @@
          </li>
          <li>
             tagi:
-
                  {% for tag in tags %}
                    {{ tag}},
                  {% endfor %}
-
-
          </li>
      </ul>
          <div>
@@ -34,9 +30,7 @@
              <img src="{{ image.url }}">
              {% endif %}
          </div>
-     <div>
-        <img src={{ image}} alt="okładka">
-    </div>
+
      </h3>
             {% if book.available %}
                 <div class="alert alert-success" role="alert">Dostępna</div>
@@ -49,5 +43,6 @@
                 {% crispy form %}
             {% endif %}
             </div>
+
          {% endblock %}
 

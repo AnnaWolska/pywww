@@ -7,10 +7,19 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import AnonymousUser
 from posts.forms import PostForm
 from dal import autocomplete
+from django.core.paginator import Paginator
+
 
 def posts_list(request):
-    posts = Post.objects.all()
-    context = {'posts_list': posts}
+    posts = Post.objects.filter(published=True)
+    # q = request.GET("q")
+    #
+    # if q:
+    #     posts = posts.filter(title_incontains=q)
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    posts_list = paginator.get_page(page_number)
+    context = {'posts_list': posts_list}
     return render(request, "posts/list.html", context)
 
 
