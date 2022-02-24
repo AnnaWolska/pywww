@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from posts.models import Post, Category
 from django.template import loader
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import AnonymousUser
 from posts.forms import PostForm
 from dal import autocomplete
@@ -77,7 +77,7 @@ def add_post(request):
             form.save_m2m()
             return HttpResponseRedirect(reverse("posts:add_post"))
     else:
-        form = PostForm()
+        return redirect(reverse('login'))
     return(
         render(request, "posts/add.html", {"form": form})
     )
@@ -94,10 +94,8 @@ def edit_post(request, post_id):
     return render(
         request,
         "posts/edit.html",
-        # "posts/add.html",
         {"form": form}
     )
-
 
 
 class CategoryAutocomplete(autocomplete.Select2QuerySetView):
