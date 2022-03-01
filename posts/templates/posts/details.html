@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
 
 {% block header %}
     <h3><a href = "{% url 'posts:list' %}"> Powrót do listy postów </a></h3>
@@ -45,8 +47,11 @@
              {% endif %}
          </li>
 
-            {% if  image %}
-               <img src="{{ image.url }}">
+            {% if image %}
+{#               <img src="{{ image.url }}">#}
+                {% thumbnail image "200x200" as im %}
+                <img src="{{ im.url }}">
+                 {% endthumbnail %}
                 {% else %}
             tu może być czasem obrazek.
                 {% endif %}
@@ -59,3 +64,4 @@
         {% endif %}
 {% endblock %}
 
+http://127.0.0.1:8000/images/cache/9c/cf/9ccf034b91a6c82d6926dc23db4215e8.jpg

@@ -26,25 +26,39 @@
         {% endfor %}
 
       <div class="pagination">
-    <span class = "step-links">
+      <span class = "step-links">
+
         {% if books_list.has_previous %}
             <a href="?page=1">&laquo; pierwsza</a>
             <a href="?page={{ books_list.previous_page_number }}">poprzednia</a>
+
         {% endif %}
 
         <span class="current">
-            strona {{ books_list.number }} z {{ books_list.paginator.num_pages }}.
+            strona {{ books_list.number}}  z {{ books_list.paginator.num_pages }}.
+{#            <a href="?page={{ books_list.number }}">         </a>#}
         </span>
 
-        {% if books_list.has_next %}
+{#      {% for number in books_list.painator.num_pages %}#}
+{#          <a href="?page={{ books_list.number }}">{{ books_list.number }} </a>#}
+{#      {% endfor %}#}
 
+{#        {% if books_list.has.number %}#}
+{#            #}
+{#        {% endif %}#}
+
+        {% if books_list.has_next %}
             <a href="?page={{ books_list.next_page_number }}">następna</a>
+            <a href="?page={{ books_list.end_index }}">ostatnia</a>
 {#            <a href="?page={{ books_list.paginator.num_pages }}">poprzednia &raquo;</a>#}
         {% endif %}
+
+        {% if books_list.end_index %}
+
+        {% endif %}
+
     </span>
 </div>
 
     {% endblock %}
 
-</body>
-</html>

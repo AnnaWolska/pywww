@@ -66,21 +66,29 @@ def post_sponsored(request):
 
 
 def add_post(request):
-    if request.method == "POST" and request.user.is_authenticated:
+
+    if request.user.is_authenticated:
         form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            # form.cleaned_data['user'] = request.user
-            # post = Post.objects.create(**form.cleaned_data)
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            form.save_m2m()
-            return HttpResponseRedirect(reverse("posts:add_post"))
+        if request.method == "POST":
+
+            if form.is_valid():
+                # form.cleaned_data['user'] = request.user
+                # post = Post.objects.create(**form.cleaned_data)
+
+                instance = form.save(commit=False)
+                instance.user = request.user
+                instance.image = request.FILES
+                instance.save()
+                form.save_m2m()
+                return HttpResponseRedirect(reverse("posts:list"))
+
+        return(
+            render(request, "posts/add.html", {"form": form})
+        )
     else:
         return redirect(reverse('login'))
-    return(
-        render(request, "posts/add.html", {"form": form})
-    )
+
+
 
 
 def edit_post(request, post_id):

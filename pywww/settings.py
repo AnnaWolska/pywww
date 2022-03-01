@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'django_extensions',
     'import_export',
     'crispy_forms',
+    'sorl.thumbnail',
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
     'main.apps.MainConfig',
     'tags.apps.TagsConfig',
-    'register.apps.RegisterConfig'
+    'register.apps.RegisterConfig',
+    'galleries.apps.GalleriesConfig'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

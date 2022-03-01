@@ -12,15 +12,12 @@ class PostForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(
         queryset=Tag.objects.all(),
         widget=autocomplete.ModelSelect2Multiple(url='tags:tag-autocomplete'
-        )
-    )
+        ))
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
         # widget=AutocompleteSelectMultiple(Post._meta.get_field('categories'),admin.AdminSite())
-    widget = autocomplete.ModelSelect2Multiple(url='posts:category-autocomplete'
-    )
-    )
-
+        widget=autocomplete.ModelSelect2Multiple(url='posts:category-autocomplete'
+        ))
 
     class Meta:
         model = Post
