@@ -4,7 +4,7 @@ from sorl.thumbnail import ImageField
 
 class Books(models.Model):
     title = models.CharField(max_length=255)
-    decription = models.TextField()
+    decription = models.TextField(null=True, blank=True)
     available = models.BooleanField(default=False)
     publication_year = models.SmallIntegerField()
     author = models.CharField(max_length=64)

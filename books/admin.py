@@ -4,8 +4,7 @@ from import_export.admin import ExportMixin
 from .models import Books, Borrow
 
 
-
-class PostResource(resources.ModelResource):
+class BooksResource(resources.ModelResource):
     class Meta:
         model = Books
 
@@ -15,11 +14,11 @@ class BooksAdmin(ExportMixin,admin.ModelAdmin):
     search_fields = ["title", "author", "publication_year", "available", "tags"]
     list_filter = ["author", "available", "tags"]
     autocomplete_fields = ['tags']
-    resource_class = PostResource
+    resource_class = BooksResource
 
 @admin.register(Borrow)
 class BorrowAdmin(admin.ModelAdmin):
     list_display = ["book", "user", "borrow_date", "return_date"]
     search_fields = ["book", "user", "borrow_date", "return_date"]
     list_filter = ["book", "user", "borrow_date", "return_date"]
-    resource_class = PostResource
+    resource_class = BooksResource
