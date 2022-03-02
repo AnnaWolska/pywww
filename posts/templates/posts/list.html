@@ -11,8 +11,32 @@
 
 {% block content %}
 
-     <img src="/static/main/img/czytanie.jpeg" alt="czytanie">
+    <img src="/static/main/img/czytanie.jpeg" alt="czytanie">
     <h2>  <a href = "{% url 'posts:add_post' %}"> Dodaj post </a>  </h2>
+
+    <div class="pagination">
+        <span class = "step-links">
+
+        {% if posts_list.has_previous %}
+            <a href="?page=1">&laquo; pierwsza</a>
+            <a href="?page={{ posts_list.previous_page_number }}">poprzednia</a>
+        {% endif %}
+
+            <span class="current">
+                strona {{ posts_list.number}}  z {{ posts_list.paginator.num_pages }}.
+            </span>
+
+        {% if posts_list.has_next %}
+            <a href="?page={{ posts_list.next_page_number }}">następna</a>
+            <a href="?page={{ posts_list.end_index }}">ostatnia</a>
+        {% endif %}
+
+        {% if posts_list.end_index %}
+        {% endif %}
+        </span>
+    </div>
+
+
     <h1>Lista postów:</h1>
 
     <ul>
@@ -32,30 +56,34 @@
                          <p class="list-group-item list-group-item-action disabled">post niesponsorowany</p>
                      {% endif %}
                 {% endif %}
-                    </a>
+
                 </li>
             </ol>
             </div>
     {% endfor %}
    </ul>
 
- <div class="pagination">
-    <span class = "step-links">
+    <div class="pagination">
+        <span class = "step-links">
+
         {% if posts_list.has_previous %}
             <a href="?page=1">&laquo; pierwsza</a>
             <a href="?page={{ posts_list.previous_page_number }}">poprzednia</a>
         {% endif %}
 
-        <span class="current">
-            strona {{ posts_list.number }} z {{ posts_list.paginator.num_pages }}.
-        </span>
+            <span class="current">
+                strona {{ posts_list.number}}  z {{ posts_list.paginator.num_pages }}.
+            </span>
 
         {% if posts_list.has_next %}
             <a href="?page={{ posts_list.next_page_number }}">następna</a>
-{#            <a href="?page={{ posts_list.paginator.num_pages }}">poprzednia &raquo;</a>#}
+            <a href="?page={{ posts_list.end_index }}">ostatnia</a>
         {% endif %}
-    </span>
-</div>
+
+        {% if posts_list.end_index %}
+        {% endif %}
+        </span>
+    </div>
 
 {% endblock %}
 
