@@ -45,11 +45,13 @@
             <ol>
              {% if post.published %}
                 <li class="list-group-item">
-                    {{ post.id}}    {{ post.title }} , {{  post.content }}  ,
+                    {{ post.id}}  {{ post.user }}  {{ post.title }} , {{  post.content }}  ,
 
                      <p> <a href = "{% url 'posts:details' post.id %}" > Szczegóły  </a>   </p>
+                    {% if post.user.is_authenticated %}
                      <p> <a href = "{% url 'posts:edit_post' post.id %}">  Edytuj post </a>   </p>
-                     {% if post.sponsored %}
+                     {% endif %}
+                 {% if post.sponsored %}
 
                         <p class="list-group-item list-group-item-action disabled">post sponsorowany</p>
                      {% else %}

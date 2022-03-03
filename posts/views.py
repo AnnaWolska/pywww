@@ -89,21 +89,29 @@ def add_post(request):
         return redirect(reverse('login'))
 
 
+# def edit_post(request, post_id):
+#     post = get_object_or_404(Post, pk=post_id)
+#     user = request.user
+#     if request.method == "POST":
+#         if user.is_authenticated:
+#             form = PostForm(request.POST, request.FILES, instance=post)
+#             if form.is_valid():
+#                 form.save()
+#             return HttpResponseRedirect(reverse("posts:list"))
 
 
 def edit_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    if request.method == "POST":
+    post.user = request.user
+    if request.method == "POST" and post.user.is_authenticated:
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
+        else:
+            return redirect(reverse('login'))
     else:
         form = PostForm(instance=post)
-    return render(
-        request,
-        "posts/edit.html",
-        {"form": form}
-    )
+        return render( request,"posts/edit.html", {"form": form})
 
 
 class CategoryAutocomplete(autocomplete.Select2QuerySetView):

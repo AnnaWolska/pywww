@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import galleries_list, gallery_details, add_gallery
+from .views import galleries_list, gallery_details, add_gallery, add_photo
 
 app_name = "galleries"
 urlpatterns = [
     path('',galleries_list, name="galleries_list"),
     path('<int:gallery_id>', gallery_details, name="gallery_details"),
-    path('add', add_gallery, name="add_gallery")
+    path('add', add_gallery, name="add_gallery"),
+    path('add_photo', add_photo, name="add_photo")
     ]
 
