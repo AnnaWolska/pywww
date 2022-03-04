@@ -48,7 +48,8 @@
                     {{ post.id}}  {{ post.user }}  {{ post.title }} , {{  post.content }}  ,
 
                      <p> <a href = "{% url 'posts:details' post.id %}" > Szczegóły  </a>   </p>
-                    {% if post.user.is_authenticated %}
+
+                       {% if post.user == request.user %}
                      <p> <a href = "{% url 'posts:edit_post' post.id %}">  Edytuj post </a>   </p>
                      {% endif %}
                  {% if post.sponsored %}

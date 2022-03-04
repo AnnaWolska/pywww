@@ -45,6 +45,8 @@ def post_details(request, post_id):
     categories = posts.categories.all()
     exemple_file = posts.exemple_file
     image = posts.image
+    created = posts.created
+    modified = posts.modified
     return render(request, "posts/details.html", context={
         'id' : id,
         'title' : title,
@@ -55,7 +57,9 @@ def post_details(request, post_id):
         'tags' : tags,
         'categories' : categories,
         'exemple_file' : exemple_file,
-        'image' : image
+        'image' : image,
+        'created':created,
+        'modified':modified
     })
 
 
@@ -74,7 +78,6 @@ def add_post(request):
             if form.is_valid():
                 # form.cleaned_data['user'] = request.user
                 # post = Post.objects.create(**form.cleaned_data)
-
                 instance = form.save(commit=False)
                 instance.user = request.user
                 instance.image = request.FILES
@@ -101,17 +104,23 @@ def add_post(request):
 
 
 def edit_post(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    post.user = request.user
-    if request.method == "POST" and post.user.is_authenticated:
-        form = PostForm(request.POST, request.FILES, instance=post)
-        if form.is_valid():
-            form.save()
-        else:
-            return redirect(reverse('login'))
+    user = request.user
+    posts = user.posts.all()
+    for post in posts:
+        if request.method == "POST":
+            if user.is_authenticated:
+                if user == post.user:
+                    form = PostForm(request.POST, request.FILES, instance=post)
+                    if form.is_valid():
+                        form.save()
+                        return HttpResponseRedirect(reverse("posts:list"))
+                    else:
+                        return redirect(reverse('login'))
     else:
-        form = PostForm(instance=post)
-        return render( request,"posts/edit.html", {"form": form})
+        if user.is_authenticated:
+            if user == request.user:
+                form = PostForm(instance=post)
+                return render( request,"posts/edit.html", {"form": form})
 
 
 class CategoryAutocomplete(autocomplete.Select2QuerySetView):

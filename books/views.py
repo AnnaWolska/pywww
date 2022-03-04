@@ -45,7 +45,7 @@ def add_book(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect(reverse("books:add_book"))
+        return HttpResponseRedirect(reverse("books:list"))
     else:
         form = BookForm()
     return(
@@ -81,6 +81,6 @@ def borrow_books(request, book_id=None):
     else:
         borrows = Borrow.objects.filter(user=user)
         return render(request, "borrow_list.html", {"borrows":borrows})
-
+        # None
 
 # def show_borrowed_books(request, book_id):

@@ -8,15 +8,16 @@
 
 {% block content %}
     <img src="/static/main/img/mole.jpeg" alt="mole">
-    {% thumbnail "/static/main/img/mole.jpeg" "200x200" as im %}
-        <img src="{{ im.url }}" alt="obrazek">
+{#    {% thumbnail "/static/main/img/mole.jpeg" "200x200" as im %}#}
+{#        <img src="{{ im.url }}" alt="obrazek">#}
 {#                dlaczego nie wyświetla się miniaturka?#}
-    {% endthumbnail %}
+{#    {% endthumbnail %}#}
 
 {% if  published  %}
     <h1> Szczegóły posta : </h1>
+    {% if user == request.user %}
     <h4> <a href = "{% url 'posts:edit_post' id %}"> Edytuj post </a> </h4>
-
+    {% endif %}
     <div>
     <h5>
          <ul>
@@ -44,6 +45,8 @@
                      <h3>Tu są czasem wyświetlone kategorie, akurat ten post nie ma żadnej kategorii.</h3>
                  {% endif %}
              </li>
+            <li>utwożono: {{ created }}</li>
+            <li>zmodyfikowano: {{ modified }}</li>
              <li>
                  {% if exemple_file %}
                  <div>Pobierz: <a href ="{{ exemple_file.url }}">przykład</a></div>

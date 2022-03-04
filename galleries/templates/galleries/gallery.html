@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-
 <h2> Szczegóły gallerii : </h2>
 {#    <h4> <a href = "{% url 'gas:edit_post' id %}"> Edytuj post </a> </h4>#}
   <div>
@@ -15,45 +14,22 @@
          <ul>
             <li>id: {{ id }}</li>
              <li> tytuł: {{ title }}</li>
-             <li> opis: {{ short_description }}</li>
-             <li>
-                 <div>utworzono: {{ created}}</div>
-             </li>
+             <li> opis: {{ description }}</li>
+             <li><div>utworzono: {{ created}}</div></li>
              <li>zmodyfikowano: {{ modified }}</li>
              <li>użytkownik: {{ user }}</li>
-{#             <li>tagi:#}
-{#                 {% for tag in tags %}#}
-{#                 {{ tag }},#}
-{#                 {% endfor %}#}
-{#             </li>#}
-{#             <li>#}
-{#                 {% if categories %}#}
-{#                    kategorie:#}
-{#                     {% for category in categories %}#}
-{#                     {{ category }},#}
-{#                     {% endfor %}#}
-{#                 {% else %}#}
-{#                     <h3>Tu są czasem wyświetlone kategorie, akurat ten post nie ma żadnej kategorii.</h3>#}
-{#                 {% endif %}#}
-{#             </li>#}
-{#             <li>#}
-{#                 {% if exemple_file %}#}
-{#                 <div>Pobierz: <a href ="{{ exemple_file.url }}">przykład</a></div>#}
-{#                 {% else %}#}
-{#                     tu może być czasem plik do pobrania#}
-{#                 {% endif %}#}
-{#             </li>#}
         </ul>
 {#       <img src="{{ image.url }}">#}
-        {% for photo in photos %}
-            {% thumbnail photo "200x200" as im %}
-            <img src="{{ im.url }}" alt="obrazek">
-            {% endthumbnail %}
-        {% endfor %}
+{#        {% for photo in photos %}#}
+{#            {% thumbnail photo "200x200" as im %}#}
+{#            <img src="{{ im.url }}" alt="obrazek">#}
+{#            {% endthumbnail %}#}
+{#        {% endfor %}#}
+        {% if user == request.user %}
+            <a href = "{% url 'galleries:add_photo' id %}"> Edytuj galerię</a>
+        {% else %}
+            <p>tylko twórca galerii może ją edytować</p>
+        {% endif %}
     </h5>
     </div>
-
-{#        {% else %}#}
-{#            <h2>Szeczegóły posta są niedostępne.</h2>#}
-{#        {% endif %}#}
 {% endblock %}
