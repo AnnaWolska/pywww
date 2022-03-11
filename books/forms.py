@@ -32,6 +32,7 @@ class BookForm(forms.ModelForm):
             self.helper = FormHelper()
             self.helper.from_method = 'post'
             self.helper.from_method = 'books:add'
+            # to jest dwa razy metod i działa, nie ma action, o co chodzi?
             self.helper.layout = Layout(
                 Fieldset(
                     'Dodaj książkę',

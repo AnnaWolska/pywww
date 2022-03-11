@@ -70,19 +70,29 @@ def post_sponsored(request):
 
 
 def add_post(request):
-
     if request.user.is_authenticated:
-        form = PostForm(request.POST, request.FILES)
         if request.method == "POST":
-
+            form = PostForm(request.POST, request.FILES)
+            # form.user = request.user
             if form.is_valid():
+                # form.save()
+
                 instance = form.save(commit=False)
                 instance.user = request.user
-                instance.image = request.FILES
+                # instance.image = request.FILES
                 instance.save()
+                print(instance.user)
                 form.save_m2m()
+                print(instance.user)
+                print(request.user)
                 return HttpResponseRedirect(reverse("posts:list"))
 
+            # tu dodam przekierowanie na szczegóły
+        else:
+            form = PostForm()
+        # return (
+        #     render(request, "add.html", {"form": form})
+        # )
         return(
             render(request, "posts/add.html", {"form": form})
         )
