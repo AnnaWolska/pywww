@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
 
@@ -7,7 +8,7 @@
 {% endblock %}
 
 {% block header %}
-    <p><h3>Dodawanie nowgo posta:</h3></p>
+    <h3>Dodawanie nowgo posta:</h3>
 {% endblock %}
 
 {% block title %}  Nowy post {% endblock %}
@@ -19,6 +20,7 @@
     <button type="submit"
     class = "btn btn-primary">Wyślij</button>
     </form>
+{#    {% crispy form form.helper %}#}
 {% endblock %}
 
 {% block additional_scripts %}

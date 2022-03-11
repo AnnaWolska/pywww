@@ -3,15 +3,15 @@
 {% load static %}
 {% load thumbnail %}
 
-        {% block content %}
-           <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
-            <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
-            {% thumbnail "/static/main/img/otwarta.jpeg" "200x200" as im %}
-                <img src="{{ im.url }}" alt="otwarta">
+{% block content %}
+    <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
+        <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
+{#            {% thumbnail "/static/main/img/otwarta.jpeg" "200x200" as im %}#}
+{#                <img src="{{ im.url }}" alt="otwarta">#}
 {#                dlaczego nie wyświetla się miniaturka?#}
-            {% endthumbnail %}
+{#            {% endthumbnail %}#}
 
-            <h1> Szczegóły książki : </h1>
+     <h1> Szczegóły książki : </h1>
      <div>
          <ul>
              <li>
@@ -33,26 +33,26 @@
          </ul>
      </div>
 
-         <div>
-             {% if image %}
+     <div>
+         {% if image %}
 {#             <img src="{{ image.url }}">#}
-                 {% thumbnail image "300x300" as im %}
-                  <img src="{{ im.url }}" alt="okładka">
-                 {% endthumbnail %}
-             {% endif %}
-         </div>
+             {% thumbnail image "300x300" as im %}
+              <img src="{{ im.url }}" alt="okładka">
+             {% endthumbnail %}
+         {% endif %}
+     </div>
 
-            {% if book.available %}
-                <div class="alert alert-success" role="alert">Dostępna</div>
-                {% else %}
-                <div class="alert alert-danger" role="alert">Wypożyczona</div>
-            {% endif %}
+        {% if book.available %}
+            <div class="alert alert-success" role="alert">Dostępna</div>
+            {% else %}
+            <div class="alert alert-danger" role="alert">Wypożyczona</div>
+        {% endif %}
 
-             <div>
-            {% if book.available %}
-                {% crispy form %}
-            {% endif %}
-            </div>
+         <div>
+        {% if book.available %}
+            {% crispy form %}
+        {% endif %}
+        </div>
 
-         {% endblock %}
+{% endblock %}
 

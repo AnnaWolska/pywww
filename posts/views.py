@@ -76,8 +76,6 @@ def add_post(request):
         if request.method == "POST":
 
             if form.is_valid():
-                # form.cleaned_data['user'] = request.user
-                # post = Post.objects.create(**form.cleaned_data)
                 instance = form.save(commit=False)
                 instance.user = request.user
                 instance.image = request.FILES

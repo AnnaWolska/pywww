@@ -7,12 +7,13 @@ from tags.models import Tag
 from django.contrib import admin
 from django.contrib.admin.widgets import AutocompleteSelectMultiple
 
+
 class BookForm(forms.ModelForm):
     tags = forms.ModelMultipleChoiceField(
         queryset=Tag.objects.all(),
-        widget=autocomplete.ModelSelect2Multiple(url='tags:tag-autocomplete'
-        )
+        widget=autocomplete.ModelSelect2Multiple(url='tags:tag-autocomplete')
     )
+
     class Meta:
         model = Books
         fields = ['title', 'decription', 'available', 'publication_year', 'author', 'tags', "image"]

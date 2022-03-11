@@ -15,7 +15,6 @@ class PostForm(forms.ModelForm):
         ))
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
-        # widget=AutocompleteSelectMultiple(Post._meta.get_field('categories'),admin.AdminSite())
         widget=autocomplete.ModelSelect2Multiple(url='posts:category-autocomplete'
         ))
 
@@ -33,7 +32,7 @@ class PostForm(forms.ModelForm):
             super().__init__(*args, **kwargs)
             self.helper = FormHelper()
             self.helper.form_method = 'post'
-            self.helper.from_action = 'post:add'
+            self.helper.form_action = 'post:add'
             self.helper.layout = Layout(
                 Fieldset(
                     'Dodaj post',

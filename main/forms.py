@@ -16,7 +16,6 @@ class ContactForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.from_action = 'contact'
-        # self.helper.add_input(Submit('submit', 'Wyślij'))
         self.helper.layout = Layout(
             Fieldset(
                 'Dane kontaktowe',
