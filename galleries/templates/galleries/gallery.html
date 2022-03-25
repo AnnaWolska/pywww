@@ -18,29 +18,35 @@
              <li><div>utworzono: {{ created}}</div></li>
              <li>zmodyfikowano: {{ modified }}</li>
              <li>użytkownik: {{ user }}</li>
-             <li>zdjęcie: {{ image }}</li>
+             <li>zdjęcia: {{ image }}</li>
         </ul>
-    <div class="row">
-            {%  for photo in photos %}
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="card h-100">
-                        {% thumbnail photo.image "300x300" crop="center" as im %}
-                            <img class=card-img-top" src="{{  im.url }}" alt="">
-                        {% endthumbnail %}
-                        <div class="card-body">
-                            <h4 class="card-title text-center">{{ photo.title }}</h4>
+    <div class="container">
+        <div class="row">
+            <div class=col">
+                <secttion class=photo_gallery">
+                    {%  for photo in photos %}
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="card h-100">
+                            {% thumbnail photo.image "x300" crop="center" as im %}
+                                <img  class=card-img-top" src="{{  im.url }}" alt="">
+                                <a href="{{ photo.image.url }}">
+                            {% endthumbnail %}
+                            <div class="card-body">
+                                <h4 class="card-title text-center">{{ photo.title }} </h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-
+                    {% endfor %}
+                </secttion>
+            </div>
+        </div>
     </div>
-       <img src="{{ image.url }}">
-        {% for photo in photos %}
-            {% thumbnail photo "200x200" as im %}
-            <img src="{{ im.url }}" alt="obrazek">
-            {% endthumbnail %}
-        {% endfor %}
+{#       <img src="{{ image.url }}">#}
+{#        {% for photo in photos %}#}
+{#            {% thumbnail photo "200x200" as im %}#}
+{#            <img src="{{ im.url }}" alt="obrazek">#}
+{#            {% endthumbnail %}#}
+{#        {% endfor %}#}
         {% if user == request.user %}
             <a href = "{% url 'galleries:add_photo' id %}"> Edytuj galerię</a>
         {% else %}
