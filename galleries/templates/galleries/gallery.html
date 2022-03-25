@@ -24,36 +24,28 @@
             {%  for photo in photos %}
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="card h-100">
-                        {% thumbnail gallery.photo.image "300x300" crop="center" as im %}
+                        {% thumbnail photo.image "300x300" crop="center" as im %}
                             <img class=card-img-top" src="{{  im.url }}" alt="">
                         {% endthumbnail %}
                         <div class="card-body">
                             <h4 class="card-title text-center">{{ photo.title }}</h4>
                         </div>
-{#                            <div class="card-footer text-center">#}
-{#                                <a href= "{% url 'galleries:gallery_details' gallery.id %}" class="btn btn-primary">Pokaż</a>#}
-{#                            </div>#}
-{#                                <li class="list-group-item">#}
-{#                                    {{ gallery.id}}  ,   {{gallery.user}} ,#}
-{#                                     <p> <a href = "{% url 'galleries:gallery_details' gallery.id %}" > Szczegóły  </a>   </p>#}
-{#                                     <p> <a href = "{% url 'posts:edit_post' post.id %}">  Edytuj post </a>   </p>#}
-{#                                </li>#}
-                        </div>
                     </div>
+                </div>
             {% endfor %}
-{#           </ul>#}
+
     </div>
-{#       <img src="{{ image.url }}">#}
-{#        {% for photo in photos %}#}
-{#            {% thumbnail photo "200x200" as im %}#}
-{#            <img src="{{ im.url }}" alt="obrazek">#}
-{#            {% endthumbnail %}#}
-{#        {% endfor %}#}
+       <img src="{{ image.url }}">
+        {% for photo in photos %}
+            {% thumbnail photo "200x200" as im %}
+            <img src="{{ im.url }}" alt="obrazek">
+            {% endthumbnail %}
+        {% endfor %}
         {% if user == request.user %}
             <a href = "{% url 'galleries:add_photo' id %}"> Edytuj galerię</a>
         {% else %}
             <p>tylko twórca galerii może ją edytować</p>
         {% endif %}
     </h5>
-    </div>
+  </div>
 {% endblock %}

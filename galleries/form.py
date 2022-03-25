@@ -11,11 +11,12 @@ class GalleryForm(forms.ModelForm):
 
     class Meta:
         model = Gallery
-        fields = ["title","slug","description"]
+        fields = ["title","slug","description","status"]
         labels = {
             "title": "tytuł",
             "slug": "slug",
-            "description": "opis"
+            "description": "opis",
+            "status": "status"
         }
 
         def __init__(self, *args, **kwargs):
@@ -28,7 +29,8 @@ class GalleryForm(forms.ModelForm):
                     'Dodaj galerię',
                     'title',
                     'description',
-                    'slug'
+                    'slug',
+                    'status'
                 ),
                 ButtonHolder(
                     Submit('submit', 'Dodaj', css_class='btn btn-primary'),
@@ -46,7 +48,8 @@ class PhotoForm(forms.ModelForm):
             "slug": "slug",
             "short_description": "opis",
             'image': "zdjęcie",
-            'source': "źródło"
+            'source': "źródło",
+            'status':"status"
         }
 
         def __init__(self, *args, **kwargs):
@@ -62,7 +65,8 @@ class PhotoForm(forms.ModelForm):
                     'slug',
                     "short_description",
                     'image',
-                    'source'
+                    'source',
+                    'status'
                 ),
                 ButtonHolder(
                     Submit('submit', 'Dodaj', css_class='btn btn-primary'),
