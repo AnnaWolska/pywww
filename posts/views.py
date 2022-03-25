@@ -76,17 +76,12 @@ def add_post(request):
             # form.user = request.user
             if form.is_valid():
                 # form.save()
-
                 instance = form.save(commit=False)
                 instance.user = request.user
                 # instance.image = request.FILES
                 instance.save()
-                print(instance.user)
                 form.save_m2m()
-                print(instance.user)
-                print(request.user)
-                return HttpResponseRedirect(reverse("posts:list"))
-
+            return HttpResponseRedirect(reverse("posts:list"))
             # tu dodam przekierowanie na szczegóły
         else:
             form = PostForm()

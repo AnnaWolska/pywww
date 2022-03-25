@@ -40,7 +40,7 @@
                             <h4 class="card-title text-center">{{ gallery.title }}</h4>
                         </div>
                             <div class="card-footer text-center">
-                                <a href="" class="btn btn-primary">Pokaż</a>
+                                <a href= "{% url 'galleries:gallery_details' gallery.id %}" class="btn btn-primary">Pokaż</a>
                             </div>
 {#                                <li class="list-group-item">#}
 {#                                    {{ gallery.id}}  ,   {{gallery.user}} ,#}
