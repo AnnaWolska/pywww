@@ -57,11 +57,11 @@ class PhotoForm(forms.ModelForm):
             self.helper = FormHelper()
             self.helper.form_method = 'post'
             self.helper.from_action = 'galleries:add_photo'
+            # self.helper.from_method = 'galleries:add_photo'
             self.helper.layout = Layout(
                 Fieldset(
                     'Dodaj zdjęcie',
                     'title',
-                    'short_description',
                     'slug',
                     "short_description",
                     'image',

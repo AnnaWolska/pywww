@@ -18,21 +18,22 @@
              <li><div>utworzono: {{ created}}</div></li>
              <li>zmodyfikowano: {{ modified }}</li>
              <li>użytkownik: {{ user }}</li>
-             <li>zdjęcia: {{ image }}</li>
+             <li>zdjęcia: </li>
         </ul>
     <div class="container">
         <div class="row">
-            <div class=col">
-                <secttion class=photo_gallery">
-                    {%  for photo in photos %}
+            <div class="col">
+                <secttion class="photo_gallery">
+                    {%  for photo in photos.all %}
                     <div class="col-lg-3 col-md-6 mb-4">
                         <div class="card h-100">
                             {% thumbnail photo.image "x300" crop="center" as im %}
-                                <img  class=card-img-top" src="{{  im.url }}" alt="">
                                 <a href="{{ photo.image.url }}">
+                                 <img  class="card-img-top" src="{{  im.url }}" alt="">
+                                </a>
                             {% endthumbnail %}
                             <div class="card-body">
-                                <h4 class="card-title text-center">{{ photo.title }} </h4>
+                                <div class="card-title text-center">{{ photo.title }} {{ photo.slug }} {{ photo.short_description }} {{ photo.image }} {{photo.source}} {{ photo.status }}</div>
                             </div>
                         </div>
                     </div>
@@ -48,7 +49,7 @@
 {#            {% endthumbnail %}#}
 {#        {% endfor %}#}
         {% if user == request.user %}
-            <a href = "{% url 'galleries:add_photo' id %}"> Edytuj galerię</a>
+            <a href = "{% url 'galleries:add_photo' id %}"> Edytuj galerię (dodawaj zdjęcia)</a>
         {% else %}
             <p>tylko twórca galerii może ją edytować</p>
         {% endif %}
