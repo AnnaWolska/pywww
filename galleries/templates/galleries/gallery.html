@@ -18,8 +18,32 @@
              <li><div>utworzono: {{ created}}</div></li>
              <li>zmodyfikowano: {{ modified }}</li>
              <li>użytkownik: {{ user }}</li>
-             <li>zdjęcia: </li>
+{#             <li>zdjęcia: </li>#}
         </ul>
+
+    <div class="pagination">
+        <span class = "step-links">
+
+        {% if gallery_list.has_previous %}
+            <a href="?page=1">&laquo; pierwsza</a>
+            <a href="?page={{ gallery_list.previous_page_number }}">poprzednia</a>
+        {% endif %}
+
+            <span class="current">
+                strona {{ gallery_list.number}} z {{ gallery_list.paginator.num_pages }}.
+            </span>
+
+        {% if photos.has_next %}
+            <a href="?page={{ gallery_list.next_page_number }}">następna</a>
+            <a href="?page={{ gallery_list.end_index }}">ostatnia</a>
+        {% endif %}
+
+        {% if gallery_list.end_index %}
+        {% endif %}
+        </span>
+    </div>
+
+
 {#    <div class="container">#}
         <div class="row">
 {#            <div class="col">#}
