@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'tags.apps.TagsConfig',
     'register.apps.RegisterConfig',
-    'galleries.apps.GalleriesConfig'
+    'galleries.apps.GalleriesConfig',
+    'examples.apps.ExamplesConfig'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
