@@ -42,7 +42,7 @@ class GalleryForm(forms.ModelForm):
 class PhotoForm(forms.ModelForm):
     class Meta:
         model = Photo
-        fields = ["title","slug","short_description", "image", "source"]
+        fields = ["title","slug","short_description", "image", "source","status"]
         labels = {
             "title": "tytuł",
             "slug": "slug",

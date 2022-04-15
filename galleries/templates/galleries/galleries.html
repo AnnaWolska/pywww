@@ -42,15 +42,11 @@
                             <div class="card-footer text-center">
                                 <a href= "{% url 'galleries:gallery_details' gallery.id %}" class="btn btn-primary">Pokaż</a>
                             </div>
-{#                                <li class="list-group-item">#}
-{#                                    {{ gallery.id}}  ,   {{gallery.user}} ,#}
-{#                                     <p> <a href = "{% url 'galleries:gallery_details' gallery.id %}" > Szczegóły  </a>   </p>#}
-{#                                     <p> <a href = "{% url 'posts:edit_post' post.id %}">  Edytuj post </a>   </p>#}
-{#                                </li>#}
+
                         </div>
                     </div>
             {% endfor %}
-{#           </ul>#}
+
     </div>
 
     <div class="pagination">
