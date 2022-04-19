@@ -14,7 +14,7 @@ class EngineFactory(factory.django.DjangoModelFactory):
 
     capacity = factory.LazyAttribute(lambda x: faker.random.randrange(1000, 3500, 500))
     power = factory.LazyAttribute(lambda x: faker.random.randrange(90, 220,10))
-    engine_type = factory.LazyAttribute(lambda x:  faker.random.randit(1,4))
+    engine_type = factory.LazyAttribute(lambda x:  faker.random.randint(1,4))
 
     @post_generation
     def post(self, create, extracted, **kwargs):
@@ -28,7 +28,8 @@ class CarFactory(factory.django.DjangoModelFactory):
     brand = factory.LazyAttribute(lambda x: faker.vehicle_make())
     model = factory.LazyAttribute(lambda x: faker.vehicle_model())
     production_year = factory.LazyAttribute(lambda x: faker.vehicle_year())
-    seats = factory.LazyAttribute(lambda  x: faker.random.randint(2,7))
-    cost = factory.LazyAttribute(lambda  x: faker.random.randint(5000, 100000))
+    seats = factory.LazyAttribute(lambda x: faker.random.randint(2,7))
+    cost = factory.LazyAttribute(lambda x: faker.random.randint(5000, 100000))
     engine = factory.SubFactory(EngineFactory)
     millage = factory.LazyAttribute(lambda x: faker.random.randint(10,100000))
+

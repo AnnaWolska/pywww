@@ -6,7 +6,7 @@ class Books(models.Model):
     title = models.CharField(max_length=255)
     decription = models.TextField(null=True, blank=True)
     available = models.BooleanField(default=False)
-    publication_year = models.SmallIntegerField()
+    publication_year = models.SmallIntegerField(null=True, blank=True)
     author = models.CharField(max_length=64)
     tags = models.ManyToManyField('tags.Tag', related_name="books")
     image = ImageField(upload_to="books/covers/%Y/%m/%d/", blank=True, null=True)
