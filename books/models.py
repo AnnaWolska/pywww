@@ -2,11 +2,23 @@ from django.db import models
 from django.contrib.auth.models import User
 from sorl.thumbnail import ImageField
 
+
+class Author(models.Model):
+    name = models.CharField(max_length=255)
+    birth_year = models.IntegerField(null=True, blank=True)
+    death_year = models.IntegerField(null=True, blank=True)
+    biogram = models.TextField()
+
+    def __str__(self):
+        return f"{self.name} ({self.birth_year} -)"
+
+
 class Books(models.Model):
     title = models.CharField(max_length=255)
     decription = models.TextField(null=True, blank=True)
     available = models.BooleanField(default=False)
     publication_year = models.SmallIntegerField(null=True, blank=True)
+    # author = models.ManyToManyField(Author, related_name="books")
     author = models.CharField(max_length=64)
     tags = models.ManyToManyField('tags.Tag', related_name="books")
     image = ImageField(upload_to="books/covers/%Y/%m/%d/", blank=True, null=True)
@@ -22,4 +34,6 @@ class Borrow(models.Model):
     return_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-       return f"{self.book} {self.user} {self.borrow_date} {self.return_date}"
+        return f"{self.book} {self.user} {self.borrow_date} {self.return_date}"
+
+
