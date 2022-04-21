@@ -1,5 +1,5 @@
 import factory
-from faker import  Factory
+from faker import Factory
 
 faker = Factory.create()
 

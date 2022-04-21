@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.timezone import now, timedelta
 from sorl.thumbnail import ImageField
 
+
 class CheckAgeMixin:
 
     def is_older_than_n_days(self, n=1):
@@ -15,6 +16,7 @@ class Timestamped(models.Model, CheckAgeMixin):
 
     class Meta:
         abstract = True
+
 
 class Post(Timestamped):
     title = models.CharField(verbose_name="Tytuł", max_length=255)
@@ -29,6 +31,7 @@ class Post(Timestamped):
 
     def __str__(self):
         return f"{self.id} {self.title} {self.content} {self.created} {self.modified} {self.published} {self.sponsored} {self.user} {self.tags} {self.categories} {self.exemple_file} {self.image}"
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)

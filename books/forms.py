@@ -1,11 +1,20 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Fieldset, HTML, ButtonHolder
 from django import forms
-from books.models import Books
+from books.models import Books, Author
 from dal import autocomplete
 from tags.models import Tag
 from django.contrib import admin
 from django.contrib.admin.widgets import AutocompleteSelectMultiple
+
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = "__all__"
+
+
+AuthorFormSet = forms.modelformset_factory(Author, form=AuthorForm)
 
 
 class BookForm(forms.ModelForm):
@@ -13,6 +22,7 @@ class BookForm(forms.ModelForm):
         queryset=Tag.objects.all(),
         widget=autocomplete.ModelSelect2Multiple(url='tags:tag-autocomplete')
     )
+    author = forms.ModelChoiceField(queryset=Author.objects.all(), required=False)
 
     class Meta:
         model = Books
@@ -57,3 +67,7 @@ class BookBorrowForm(forms.Form):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('borrow', 'Wypożycz'))
+
+
+
+

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'sorl.thumbnail',
+    'grappelli',
+    'tinymce',
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
     'main.apps.MainConfig',

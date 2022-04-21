@@ -18,8 +18,9 @@ class Books(models.Model):
     decription = models.TextField(null=True, blank=True)
     available = models.BooleanField(default=False)
     publication_year = models.SmallIntegerField(null=True, blank=True)
-    # author = models.ManyToManyField(Author, related_name="books")
-    author = models.CharField(max_length=64)
+    # author = models.ManyToManyField(Author, related_name="volumes")
+    # author = models.CharField(max_length=64)
+    author = models.ForeignKey("Author", on_delete=models.CASCADE, related_name="publications",null=True, blank=True)
     tags = models.ManyToManyField('tags.Tag', related_name="books")
     image = ImageField(upload_to="books/covers/%Y/%m/%d/", blank=True, null=True)
 

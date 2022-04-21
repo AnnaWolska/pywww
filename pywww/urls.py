@@ -22,7 +22,9 @@ Including another URLconf
 
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('admin/',admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
     path('books/',include('books.urls')),
     path('',include('main.urls')),
     path('posts/',include('posts.urls')),

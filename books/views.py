@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from books.models import Books, Borrow
+from books.models import Books, Borrow, Author
 from django.template import loader
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import AnonymousUser
 from tags.models import Tag
-from books.forms import BookForm, BookBorrowForm
+from books.forms import BookForm, BookBorrowForm, AuthorFormSet
 from django.utils import timezone
 from django.core.paginator import Paginator
 
@@ -41,15 +41,23 @@ def book_details(request, book_id):
 
 
 def add_book(request):
+    formset = AuthorFormSet(queryset=Author.objects.none())
     if request.method == "POST":
         form = BookForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        formset = AuthorFormSet(request.POST)
+        if formset.is_valid():
+            instance = form.save()
+            for f in formset.cleaned_data:
+                if f:
+                    author, _ = Author.objects.get_or_create(**f)
+                    # if author not in instance.authors.all():
+                    #     instance.authors.add(author)
+            instance.save()
         return HttpResponseRedirect(reverse("books:list"))
     else:
         form = BookForm()
     return(
-        render(request, "add_book.html", {"form":form})
+        render(request, "add_book.html", {"form": form, "formset": formset})
     )
 
 
