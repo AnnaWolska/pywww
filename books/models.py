@@ -12,6 +12,10 @@ class Author(models.Model):
     def __str__(self):
         return f"{self.name} ({self.birth_year} -)"
 
+    class Meta:
+        verbose_name = "Autor"
+        verbose_name_plural = "Autorzy"
+
 
 class Books(models.Model):
     title = models.CharField(max_length=255)
@@ -27,6 +31,15 @@ class Books(models.Model):
     def __str__(self):
         return f"{self.id} {self.title} {self.decription} {self.available} {self.publication_year} {self.author} {self.tags} {self.image}"
 
+    class Meta:
+        verbose_name = "Książka"
+        verbose_name_plural = "Książki"
+
+    @property
+    def tags_count(self):
+        return self.tags.count()
+
+
 
 class Borrow(models.Model):
     book = models.ForeignKey("Books", on_delete=models.CASCADE, related_name="borrows")
@@ -37,4 +50,6 @@ class Borrow(models.Model):
     def __str__(self):
         return f"{self.book} {self.user} {self.borrow_date} {self.return_date}"
 
-
+    class Meta:
+        verbose_name = "Wypożyczenie"
+        verbose_name_plural = "Wypożyczenia"

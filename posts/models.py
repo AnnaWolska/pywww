@@ -32,6 +32,9 @@ class Post(Timestamped):
     def __str__(self):
         return f"{self.id} {self.title} {self.content} {self.created} {self.modified} {self.published} {self.sponsored} {self.user} {self.tags} {self.categories} {self.exemple_file} {self.image}"
 
+    class Meta:
+        verbose_name = "Post"
+        verbose_name_plural = "Posty"
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -39,3 +42,7 @@ class Category(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.description}"
+
+    class Meta:
+        verbose_name = "Kategoria"
+        verbose_name_plural = "Kategorie"

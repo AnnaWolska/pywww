@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'grappelli',
     'dal',
     'dal_select2',
     'django.contrib.admin',
@@ -43,7 +44,6 @@ INSTALLED_APPS = [
     'import_export',
     'crispy_forms',
     'sorl.thumbnail',
-    'grappelli',
     'tinymce',
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
