@@ -85,25 +85,11 @@ def add_post(request):
             # tu dodam przekierowanie na szczegóły
         else:
             form = PostForm()
-        # return (
-        #     render(request, "add.html", {"form": form})
-        # )
         return(
             render(request, "posts/add.html", {"form": form})
         )
     else:
         return redirect(reverse('login'))
-
-
-# def edit_post(request, post_id):
-#     post = get_object_or_404(Post, pk=post_id)
-#     user = request.user
-#     if request.method == "POST":
-#         if user.is_authenticated:
-#             form = PostForm(request.POST, request.FILES, instance=post)
-#             if form.is_valid():
-#                 form.save()
-#             return HttpResponseRedirect(reverse("posts:list"))
 
 
 def edit_post(request, post_id):
