@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% load static %}
+ {% block header %}
+{#                            <ul>#}
+{#                    <li> <a href = "{% url 'posts:list' %}"> link do listy postów</a></li>#}
+{#                    <li>  <a href = "{% url 'books:list' %}"> link do listy książek</a></li>#}
+{#                    <li> <a href = "{% url 'main:home' %}"> link do strony głównej</a></li>#}
+{#                    <li>  <a href = "{% url 'posts:add_post' %}"> link do formularza dodawania postów</a></li>#}
+{#                    <li> <a href = "{% url 'main:contact' %}"> link do formularza do kontaktu</a></li>#}
+{#                    </ul>#}
+ {% endblock %}
+
+    {% block content %}
+    <H1>
+        O blogu:
+    </H1>
+        <h3> To jest prosta aplikacja do opisywania książek. Jest to projekt realizowany w trakcie kursu PyWWW na platformie edukacyjnej
+            <a href="https://www.dokodu.it">dokodu.it</a> </h3>
+    <div>
+        <img src = "/static/main/img/połka" alt ="biblioteka">
+        <p>
+
+        </p>
+        <p>Aplikacja wykorzystuje bazę danych i ma dodane różne funkcjonalności:</p>
+    </div>
+    <div>
+{#        <ol>#}
+{#            <li> to powinna być lista uporządkowana</li>#}
+{#            <li> zobaczymy jaka będzie</li>#}
+{#        </ol>#}
+        <ul>
+            <li>dodawanie nowych książek ze zdjęciami okładek</li>
+            <li>dodawanie postów na temat książek</li>
+        </ul>
+    </div>
+    <div>
+{#        <table>#}
+{#        <thead> <th> nagłówek tabeli</th> <th> i jeszcze jeden</th> </thead>#}
+{#          <tr> <td> bla bla</td> <td> kle kle</td>  </tr>#}
+{#            <tr> <td> blsssssa bla</td> <td> kle gggggkle</td></tr>#}
+{#             <tr> <td> blsssssafdgdfgdfg bla</td> <td> kle ggggdfgdfggkle</td> </tr>#}
+{#            <tr><td> bldffga bla</td> <td> kldfgdfe kle</td></tr>#}
+{#            <tr>bla bla 2</tr>#}
+{#        </table>#}
+    </div>
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load thumbnail %}
+
+{% block content %}
+    <h3><a href = "{% url 'books:list' %}"> Powrót do listy książek </a></h3>
+        <img src="/static/main/img/otwarta.jpeg" alt="otwarta">
+{#            {% thumbnail "/static/main/img/otwarta.jpeg" "200x200" as im %}#}
+{#                <img src="{{ im.url }}" alt="otwarta">#}
+{#                dlaczego nie wyświetla się miniaturka?#}
+{#            {% endthumbnail %}#}
+
+     <h1> Szczegóły książki : </h1>
+     <div>
+         <ul>
+             <li>
+                 tytuł:  {{ title }}
+             </li>
+
+             <li>
+                 opis:  {{ decription }}
+             </li>
+             <li>
+                  autor: {{ author }}
+             </li>
+             <li>
+                tagi:
+                     {% for tag in tags %}
+                       {{ tag}},
+                     {% endfor %}
+             </li>
+{#         <li>kto dodał książkę: {{  }}</li>#}
+         </ul>
+     </div>
+
+     <div>
+         {% if image %}
+{#             <img src="{{ image.url }}">#}
+             {% thumbnail image "300x300" as im %}
+              <img src="{{ im.url }}" alt="okładka">
+             {% endthumbnail %}
+         {% endif %}
+     </div>
+
+        {% if book.available %}
+            <div class="alert alert-success" role="alert">Dostępna</div>
+            {% else %}
+            <div class="alert alert-danger" role="alert">Wypożyczona</div>
+        {% endif %}
+
+         <div>
+        {% if book.available %}
+            {% crispy form %}
+        {% endif %}
+        </div>
+
+{% endblock %}
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+        <h1>To jest strona główna (home)</h1>
+        <h5>Jest to aplikacja biblioteka, obsługuje bazę danych książęk i użytkowników. Można się zalogować.
+            Książki można dodawać wraz ze zdjęciami okładek i opisem. Można dodawać
+        posty na temat ksiżęk. Do postów można załączać zdjęcia. Można wypożyczać książki, przeglądać swoją listę wypożyczeń,
+        można oddawać książki.
+        </h5>
+        <img src="/static/main/img/biblioteka" alt="biblioteka">
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,86 @@
+[
+{
+  "model": "posts.post",
+  "pk": 1,
+  "fields": {
+    "title": "first",
+    "content": "something about that",
+    "published": true,
+    "created": "2021-12-30T14:40:54.447Z",
+    "modified": "2021-12-30T14:40:54.447Z",
+    "sponsored": false
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 2,
+  "fields": {
+    "title": "second",
+    "content": "something new again",
+    "published": true,
+    "created": "2021-12-30T14:41:15.393Z",
+    "modified": "2021-12-30T14:41:15.394Z",
+    "sponsored": false
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 3,
+  "fields": {
+    "title": "test",
+    "content": "test",
+    "published": true,
+    "created": "2021-12-31T13:10:08.951Z",
+    "modified": "2021-12-31T13:10:08.952Z",
+    "sponsored": false
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 4,
+  "fields": {
+    "title": "blabla",
+    "content": "blaaablaaa",
+    "published": true,
+    "created": "2022-01-03T08:11:30.522Z",
+    "modified": "2022-01-03T08:11:30.522Z",
+    "sponsored": false
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 5,
+  "fields": {
+    "title": "test",
+    "content": "test",
+    "published": true,
+    "created": "2022-01-03T09:10:46.954Z",
+    "modified": "2022-01-05T10:04:49.026Z",
+    "sponsored": true
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 6,
+  "fields": {
+    "title": "szurumburu",
+    "content": "bla blaaaa bla blaaa",
+    "published": true,
+    "created": "2022-01-03T09:19:24.658Z",
+    "modified": "2022-01-05T10:04:41.375Z",
+    "sponsored": true
+  }
+},
+{
+  "model": "posts.post",
+  "pk": 7,
+  "fields": {
+    "title": "Ala",
+    "content": "vjhjjjhj",
+    "published": true,
+    "created": "2022-01-03T11:02:42.379Z",
+    "modified": "2022-01-05T10:04:33.375Z",
+    "sponsored": true
+  }
+}
+]
