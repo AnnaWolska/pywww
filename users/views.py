@@ -10,7 +10,7 @@ class UserCounter(View):
 
     def get(self, request):
         users_counter = self.model.objects.count()
-        return render (request, self.template_name, {'users_counter':users_counter})
+        return render(request, self.template_name, {'users_counter': users_counter})
 
 
 user_counter = UserCounter.as_view()
