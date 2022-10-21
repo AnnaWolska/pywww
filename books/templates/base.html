@@ -70,6 +70,19 @@
         <li class="nav-item"><a href="{% url 'main:contact' %}" class="nav-link px-2 text-muted">Kontakt</a></li>
     </ul>
   </footer>
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert" {% if message.tags %}alert-{{ messages.tags }}{% endif %}> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-lebel="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+
 {% endblock %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
