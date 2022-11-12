@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +66,7 @@
     </a>
 
     <ul class="nav col-md-4 justify-content-end">
-      <li class="nav-item"><a href="{% url 'main:home' %}" class="nav-link px-2 text-muted">Strona główna</a></li>
+      <li class="nav-item"><a href="{% url 'main:home' %}" class="nav-link px-2 text-muted">{% blocktrans %}Strona główna{% endblocktrans %}</a></li>
        <li class="nav-item"><a href="{% url 'main:hello' %}" class="nav-link px-2 text-muted">O blogu</a></li>
         <li class="nav-item"><a href="{% url 'main:contact' %}" class="nav-link px-2 text-muted">Kontakt</a></li>
     </ul>
@@ -89,6 +90,14 @@
 
 {%  block additional_scripts %}
 {%  endblock %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert {% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message }}
+<button type="button" class="close" data-dismis="alert" aria-label="Close"><span>aria-hidden="true">&times;</span></button>
+</div>
+{% endfor %}
+{% endif %}
 
 </body>
 </html>
