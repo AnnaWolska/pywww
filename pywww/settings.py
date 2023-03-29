@@ -108,8 +108,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pywww_db',
         'USER': 'pywww',
-        # 'HOST': 'localhost',
-        # 'PORT': '5432'
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
