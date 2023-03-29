@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-# SECRET_KEY = 'django-insecure-n(gznvg&boulc_x158x8=x(d57&lv#6@1675n!x=ka35*!+u7%'
+
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'sorl.thumbnail',
     'tinymce',
+
     'posts.apps.PostsConfig',
     'books.apps.BooksConfig',
     'main.apps.MainConfig',
@@ -65,12 +66,14 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'pywww.urls'
@@ -105,7 +108,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pywww_db',
         'USER': 'pywww',
-        # 'PASSWORD': 'pywww123',
         # 'HOST': 'localhost',
         # 'PORT': '5432'
     }
@@ -167,3 +169,5 @@ MEDIA_URL = "/images/"
 
 LOGIN_REDIRECT_URL = "/home"
 LOGOUT_REDIRECT_URL = "/home"
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
