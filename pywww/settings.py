@@ -109,7 +109,7 @@ DATABASES = {
         'NAME': 'pywww_db',
         'USER': 'pywww',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5433'
     }
 }
 
